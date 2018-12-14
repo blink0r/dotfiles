@@ -112,6 +112,8 @@ alias ps="ps -auxf"
 alias psg="ps -aux | grep -v grep | grep -i -e VSZ -e"
 alias update="sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove"
 alias dot="cd ~/documents/dotfiles/"
+alias gitup="git add ~/documents/dotfiles/ && git commit -m 'update' && git push"
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
