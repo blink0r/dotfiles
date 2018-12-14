@@ -25,7 +25,7 @@ exec --no-startup-id ~/.local/bin/alternating_layouts.py
 
 # Autostart
 exec urxvt -e cmus
-exec --no-startup-id steam
+exec steam
 
 # Set variables
 set $mod          Mod4
@@ -79,7 +79,7 @@ bindsym $mod+F4         exec steam
 bindsym --release Print exec scrot
 
 # Kill focused window
-bindsym Ctrl+x          kill
+bindsym $mod+c          kill
 bindsym $mod+x          kill
 # Lock screen
 bindsym $mod+l          exec $lock
