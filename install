@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Install icons for task bar
+apt-get install fonts-font-awesome
+
 dotfiles=(".dircolors" ".vimrc" ".bashrc" ".xinitrc" ".Xresources")
 
 # Backup directory for existing dotfiles

@@ -26,7 +26,6 @@ exec --no-startup-id ~/.local/bin/alternating_layouts.py
 # Autostart
 exec urxvt -e cmus
 exec --no-startup-id steam
-# exec --no-startup-id thunderbird
 
 # Set variables
 set $mod          Mod4
