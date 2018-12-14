@@ -98,6 +98,7 @@ alias s="subl"
 alias tail="tail -f"
 alias ..="cd .."
 alias rr="reboot"
+alias off="poweroff"
 alias mkdir="mkdir -pv"
 alias epwn="vim /home/blingi/.local/bin/ctf_framework.py"
 alias rpwn="python /home/blingi/.local/bin/ctf_framework.py"
@@ -110,7 +111,7 @@ alias du="du -ach"
 alias ps="ps -auxf"
 alias psg="ps -aux | grep -v grep | grep -i -e VSZ -e"
 alias update="sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove"
-
+alias dot="cd ~/documents/dotfiles/"
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
