@@ -1,3 +1,1 @@
-#!usr/bin/env bash
-xrdb -merge ~/.Xresources
-exec i3
+/home/blingi/.xinitrc
