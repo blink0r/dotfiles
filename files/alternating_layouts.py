@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 
 import i3
 import re
@@ -39,9 +39,8 @@ def set_layout():
     for win in current_win:
         parent = find_parent(win['id'])
 
-        if (parent and "rect" in parent
-                   and parent['layout'] != 'tabbed'
-                   and parent['layout'] != 'stacked'):
+        if (parent and "rect" in parent and parent['layout'] != 'tabbed'
+                and parent['layout'] != 'stacked'):
             height = parent['rect']['height']
             width = parent['rect']['width']
 
@@ -57,7 +56,9 @@ def print_help():
     print("Usage: " + sys.argv[0] + " [-p path/to/pid.file]")
     print("")
     print("Options:")
-    print("    -p path/to/pid.file   Saves the PID for this program in the filename specified")
+    print(
+        "    -p path/to/pid.file   Saves the PID for this program in the filename specified"
+    )
     print("")
 
 
@@ -80,18 +81,15 @@ def main():
         with open(pid_file, 'w') as f:
             f.write(str(os.getpid()))
 
-
-    process = subprocess.Popen(
-        ['xprop', '-root', '-spy'],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE
-    )
+    process = subprocess.Popen(['xprop', '-root', '-spy'],
+                               stdout=subprocess.PIPE,
+                               stderr=subprocess.PIPE)
     regex = re.compile(b'^_NET_CLIENT_LIST_STACKING|^_NET_ACTIVE_WINDOW')
 
     last_line = ""
     while True:
         line = process.stdout.readline()
-        if line == b'': #X is dead
+        if line == b'':
             break
         if line == last_line:
             continue
@@ -101,6 +99,7 @@ def main():
 
     process.kill()
     sys.exit()
+
 
 if __name__ == "__main__":
     main()
