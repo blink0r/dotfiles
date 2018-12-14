@@ -2,18 +2,47 @@
 
 dotfiles=(".dircolors" ".vimrc" ".bashrc" ".xinitrc" ".Xresources")
 
-i3_conf = "config"
-ranger_conf = "rc.conf"
-rifle_conf = "rifle.conf"
-i3blocks_conf = "i3blocks.conf"
+# Backup directory for existing dotfiles
+backup_dir="$PWD/backup"
 
-dir="${PWD}"
-backup_dir = "${dir}/backup"
+# Create missing directories
+mkdir -p $HOME/.config/ranger
+mkdir -p $HOME/.config/i3
+mkdir -p $HOME/.local/bin
+mkdir -p /usr/share/i3blocks
 
+# Symlink dotfiles in home directory
 for dotfile in "${dotfiles[@]}"
 do
-	cp "${HOME}/${dotfile}" "${backup_dir}/"
-	ln -sf "${dir}/${dotfile}" "${HOME}/${dotfile}"
+	cp "$HOME/${dotfile}" "$backup_dir"
+	ln -sf "$PWD/${dotfile}" "$HOME/${dotfile}"
+	chown -h $SUDO_USER:$SUDO_USER "$HOME/${dotfile}"
 done
 
-ln -sf "${dir}/${ranger_conf}" "${HOME}/${dotfile}"
+# Symlink remaining config files
+ln -sf "$PWD/rc.conf" "$HOME/.config/ranger/rc.conf"
+ln -sf "$PWD/rifle.conf" "$HOME/.config/ranger/rifle.conf"
+ln -sf "$PWD/i3blocks.conf" "/etc/i3blocks.conf"
+ln -sf "$PWD/config" "$HOME/.config/i3/config"
+
+# Copy scripts to system
+cp "files/alternating_layouts.py" "$HOME/.local/bin/alternating_layouts.py"
+cp "files/scope.sh" "$HOME/.config/ranger/scope.sh"
+cp "files/i3cmus" "/usr/share/i3blocks/i3cmus"
+cp "files/i3date" "/usr/share/i3blocks/i3date"
+cp "files/i3mem" "/usr/share/i3blocks/i3mem"
+
+# Adjust file ownership
+chown -h $SUDO_USER:$SUDO_USER "$HOME/.config/ranger/rc.conf"
+chown -h $SUDO_USER:$SUDO_USER "$HOME/.config/ranger/rifle.conf"
+chown -h $SUDO_USER:$SUDO_USER "/etc/i3blocks.conf"
+chown -h $SUDO_USER:$SUDO_USER "$HOME/.config/i3/config"
+chown -R $SUDO_USER:$SUDO_USER "$HOME/.local/"
+chown -R $SUDO_USER:$SUDO_USER "$HOME/.config/"
+
+if [ "$?" -eq "0" ]
+then
+  echo "Installation finished successfully"
+else
+  echo "Error while trying to install config files"
+fi
