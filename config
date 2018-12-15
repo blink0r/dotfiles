@@ -39,6 +39,8 @@ set $prev         --no-startup-id cmus-remote -r
 set $inc          --no-startup-id cmus-remote --volume +10%
 set $dec          --no-startup-id cmus-remote --volume -10%
 set $lock         --no-startup-id i3lock -e -i ~/pictures/wallpaper/wallpaper_rimuru.png
+set $screenshot   scrot ~/pictures/screenshots/%Y-%m-%d-%H%M%S.png
+set $python       urxvt -e python3
 set $workspace1   "1"
 set $workspace2   "2"
 set $workspace3   "3"
@@ -75,14 +77,21 @@ bindsym $mod+minus      exec $dec
 # Start steam client
 bindsym $mod+F4         exec steam
 
+# Start python3
+bindsym $mod+adiaeresis exec $python
+
 # Take a screenshot
-bindsym --release Print exec scrot
+bindsym --release Print exec $screenshot
 
 # Kill focused window
 bindsym $mod+c          kill
 bindsym $mod+x          kill
+
 # Lock screen
 bindsym $mod+l          exec $lock
+
+# reload i3
+bindsym $mod+r reload
 
 # Default layout
 assign [class="Firefox"]     $workspace2
@@ -149,9 +158,6 @@ bindsym $mod+Shift+7 move container to workspace $workspace7
 bindsym $mod+Shift+8 move container to workspace $workspace8
 bindsym $mod+Shift+9 move container to workspace $workspace9
 
-# restart i3
-bindsym $mod+r restart
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
@@ -176,7 +182,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+shift mode "resize"
+bindsym $mod+p mode "resize"
 
 # Start i3blocks to display a workspace bar
 bar {

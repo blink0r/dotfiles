@@ -5,7 +5,7 @@
 "   \_/  |_|_| |_| |_|_| \_\\____|
 "
 
-inoremap <F1> <Esc>:w<Enter>
+inoremap <F1> <Esc>
 nnoremap <F5> :call <SID>compile_and_run()<CR>
 nnoremap <F6> :call asyncrun#quickfix_toggle(8)<cr>
 autocmd FileType python nnoremap <F7> :0,$!yapf<CR>
@@ -49,7 +49,7 @@ autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritePost ~/.Xresources !xrdb %
 
 " Run i3-msg reload when i3 config is updated
-autocmd BufWritePost ~/.config/i3/config !i3-msg reload
+" autocmd BufWritePost ~/.config/i3/config !i3-msg reload
 
 " Automagically resize splits when the host is resized
 autocmd VimResized * wincmd =
