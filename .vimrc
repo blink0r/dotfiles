@@ -5,9 +5,9 @@
 "   \_/  |_|_| |_| |_|_| \_\\____|
 "
 
-inoremap <F1> <Esc>
-nnoremap <F5> :call <SID>compile_and_run()<CR>
-nnoremap <F6> :call asyncrun#quickfix_toggle(8)<cr>
+inoremap <F1> <Esc><Enter>
+nnoremap <F8> :call <SID>compile_and_run()<CR>
+nnoremap <F9> :call asyncrun#quickfix_toggle(8)<cr>
 autocmd FileType python nnoremap <F7> :0,$!yapf<CR>
 nnoremap <F1> :set im<Enter>
 inoremap <C-k> <C-o>gk
@@ -15,16 +15,13 @@ inoremap <C-h> <Left>
 inoremap <C-l> <Right>
 inoremap <C-j> <C-o>gj
 nnoremap Q <nop>
+nnoremap <F2> :wq<Enter>
 
 " Make basic movements work better with wrapped lines
 nnoremap j gj
 nnoremap gj j
 nnoremap k gk
 nnoremap gk k
-
-"Make backspace delete in normal
-nnoremap <BS>    <BS>x
-xnoremap <BS> x
 
 syntax on
 set nocompatible              " required
@@ -48,9 +45,6 @@ autocmd BufWritePre * %s/\s\+$//e
 " Run xrdb when Xresources is updated
 autocmd BufWritePost ~/.Xresources !xrdb %
 
-" Run i3-msg reload when i3 config is updated
-" autocmd BufWritePost ~/.config/i3/config !i3-msg reload
-
 " Automagically resize splits when the host is resized
 autocmd VimResized * wincmd =
 
@@ -65,8 +59,6 @@ Plugin 'skywind3000/asyncrun.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'ajh17/VimCompletesMe'
 Plugin 'junegunn/goyo.vim'
-"Plugin 'junegunn/limelight.vim'
-"Plugin 'davidhalter/jedi-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
