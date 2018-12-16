@@ -12,7 +12,7 @@ gaps inner 15
 gaps outer 15
 
 # Revert mouse buttons
-exec xmodmap -e "pointer = 3 2 1" 2>/dev/null
+# exec xmodmap -e "pointer = 3 2 1" 2>/dev/null
 
 # Set resolution
 exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --rate 144
