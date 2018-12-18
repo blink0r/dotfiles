@@ -99,7 +99,7 @@ assign [class="Steam"]       $workspace3
 assign [class="mpv"]         $workspace4
 assign [title="cmus"]        $workspace5
 assign [class="Thunderbird"] $workspace6
-
+assign [class="qbittorrent"] $workspace7
 
 # Change focus
 bindsym $mod+j focus left
