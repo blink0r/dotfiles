@@ -14,14 +14,15 @@ gaps outer 15
 # Revert mouse buttons
 # exec xmodmap -e "pointer = 3 2 1" 2>/dev/null
 
-# Set resolution
+# Set monitor layout and resolution
 exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --rate 144
+exec $monitor
 
 # Makes new windows split horizontally or vertically depending on window size
 exec --no-startup-id python ~/.local/bin/alternating_layouts.py
 
 # Set wallpaper
-exec --no-startup-id feh --bg-scale ~/pictures/wallpaper/wallpaper_rimuru.png
+exec --no-startup-id feh --bg-fill --no-fehbg ~/pictures/wallpaper/wallpaper_coffee.png ~/pictures/wallpaper/wallpaper_rimuru.png
 
 # Autostart
 exec urxvt -e cmus
@@ -39,6 +40,7 @@ set $prev         --no-startup-id cmus-remote -r
 set $inc          --no-startup-id cmus-remote --volume +10%
 set $dec          --no-startup-id cmus-remote --volume -10%
 set $lock         --no-startup-id i3lock -e -i ~/pictures/wallpaper/wallpaper_rimuru.png
+set $monitor      --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --left-of DP-0
 set $screenshot   scrot ~/pictures/screenshots/%Y-%m-%d-%H%M%S.png
 set $python       urxvt -e python3
 set $workspace1   "1"
@@ -70,12 +72,18 @@ bindsym $mod+F2         exec $mail
 bindsym $mod+F3         exec $music
 bindsym $mod+comma      exec $prev
 bindsym $mod+period     exec $next
-bindsym $mod+space      exec $pause
+bindsym $mod+m          exec $pause
 bindsym $mod+plus       exec $inc
 bindsym $mod+minus      exec $dec
 
 # Start steam client
 bindsym $mod+F4         exec steam
+
+# Configure second monitor
+bindsym $mod+p          exec $monitor
+
+# Move worspace to left monitor
+bindsym $mod+space move workspace to output left
 
 # Start python3
 bindsym $mod+adiaeresis exec $python
@@ -85,13 +93,12 @@ bindsym --release Print exec $screenshot
 
 # Kill focused window
 bindsym $mod+c          kill
-bindsym $mod+x          kill
 
 # Lock screen
 bindsym $mod+l          exec $lock
 
 # reload i3
-bindsym $mod+r reload
+bindsym $mod+r          reload
 
 # Default layout
 assign [class="Firefox"]     $workspace2
@@ -100,6 +107,17 @@ assign [class="mpv"]         $workspace4
 assign [title="cmus"]        $workspace5
 assign [class="Thunderbird"] $workspace6
 assign [class="qbittorrent"] $workspace7
+
+# Default monitor workspace layout
+workspace 1 output DP-0
+workspace 2 output DP-0
+workspace 3 output HDMI-0
+workspace 4 output DP-0
+workspace 5 output HDMI-0
+workspace 6 output HDMI-0
+workspace 7 output HDMI-0
+workspace 8 output DP-0
+workspace 9 output DP-0
 
 # Change focus
 bindsym $mod+j focus left

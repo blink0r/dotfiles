@@ -1,5 +1,5 @@
 ! Fonts and colors
-URxvt.font:xft:Monospace:pixelsize=15
+URxvt.font:xft:Monospace:pixelsize=16
 URxvt.letterSpace: -1
 URxvt.background: #000000
 URxvt.foreground: #0f84e7
