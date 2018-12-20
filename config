@@ -15,7 +15,6 @@ gaps outer 15
 # exec xmodmap -e "pointer = 3 2 1" 2>/dev/null
 
 # Set monitor layout and resolution
-#exec --no-startup-id xrandr --output DP-4 --mode 1920x1080 --rate 144
 exec $monitor
 
 # Makes new windows split horizontally or vertically depending on window size
@@ -39,7 +38,7 @@ set $next         --no-startup-id cmus-remote -n
 set $prev         --no-startup-id cmus-remote -r
 set $inc          --no-startup-id cmus-remote --volume +10%
 set $dec          --no-startup-id cmus-remote --volume -10%
-set $lock         --no-startup-id i3lock -eti ~/pictures/wallpaper/wallpaper_rimuru.png
+set $lock         --no-startup-id i3lock -euti ~/pictures/wallpaper/wallpaper_rimuru.png
 set $monitor      --no-startup-id xrandr --output DP-4 --mode 1920x1080 --rate 144 --right-of HDMI-0 --primary
 set $screenshot   scrot ~/pictures/screenshots/%Y-%m-%d-%H%M%S.png
 set $python       urxvt -e python3
