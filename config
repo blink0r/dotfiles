@@ -15,14 +15,14 @@ gaps outer 15
 # exec xmodmap -e "pointer = 3 2 1" 2>/dev/null
 
 # Set monitor layout and resolution
-exec --no-startup-id xrandr --output DP-0 --mode 1920x1080 --rate 144
+#exec --no-startup-id xrandr --output DP-4 --mode 1920x1080 --rate 144
 exec $monitor
 
 # Makes new windows split horizontally or vertically depending on window size
 exec --no-startup-id python ~/.local/bin/alternating_layouts.py
 
 # Set wallpaper
-exec --no-startup-id feh --bg-fill --no-fehbg ~/pictures/wallpaper/wallpaper_coffee.png ~/pictures/wallpaper/wallpaper_rimuru.png
+exec --no-startup-id feh --bg-fill --no-fehbg ~/pictures/wallpaper/wallpaper_rimuru.png ~/pictures/wallpaper/wallpaper_coffee.png
 
 # Autostart
 exec urxvt -e cmus
@@ -39,8 +39,8 @@ set $next         --no-startup-id cmus-remote -n
 set $prev         --no-startup-id cmus-remote -r
 set $inc          --no-startup-id cmus-remote --volume +10%
 set $dec          --no-startup-id cmus-remote --volume -10%
-set $lock         --no-startup-id i3lock -e -i ~/pictures/wallpaper/wallpaper_rimuru.png
-set $monitor      --no-startup-id xrandr --output HDMI-0 --mode 1920x1080 --left-of DP-0
+set $lock         --no-startup-id i3lock -eti ~/pictures/wallpaper/wallpaper_rimuru.png
+set $monitor      --no-startup-id xrandr --output DP-4 --mode 1920x1080 --rate 144 --right-of HDMI-0 --primary
 set $screenshot   scrot ~/pictures/screenshots/%Y-%m-%d-%H%M%S.png
 set $python       urxvt -e python3
 set $workspace1   "1"
@@ -109,15 +109,15 @@ assign [class="Thunderbird"] $workspace6
 assign [class="qbittorrent"] $workspace7
 
 # Default monitor workspace layout
-workspace 1 output DP-0
-workspace 2 output DP-0
-workspace 3 output HDMI-0
-workspace 4 output DP-0
+workspace 1 output DP-4
+workspace 2 output DP-4
+workspace 3 output DP-4
+workspace 4 output DP-4
 workspace 5 output HDMI-0
 workspace 6 output HDMI-0
 workspace 7 output HDMI-0
-workspace 8 output DP-0
-workspace 9 output DP-0
+workspace 8 output DP-4
+workspace 9 output DP-4
 
 # Change focus
 bindsym $mod+j focus left
@@ -202,7 +202,7 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+p mode "resize"
+bindsym $mod+o mode "resize"
 
 # Start i3blocks to display a workspace bar
 bar {
