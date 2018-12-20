@@ -39,7 +39,7 @@ set $prev         --no-startup-id cmus-remote -r
 set $inc          --no-startup-id cmus-remote --volume +10%
 set $dec          --no-startup-id cmus-remote --volume -10%
 set $lock         --no-startup-id i3lock -euti ~/pictures/wallpaper/wallpaper_rimuru.png
-set $monitor      --no-startup-id xrandr --output DP-4 --mode 1920x1080 --rate 144 --right-of HDMI-0 --primary
+set $monitor      --no-startup-id xrandr --output DP-4 --primary --mode 1920x1080 --rate 144 --right-of HDMI-0
 set $screenshot   scrot ~/pictures/screenshots/%Y-%m-%d-%H%M%S.png
 set $python       urxvt -e python3
 set $workspace1   "1"
@@ -56,7 +56,7 @@ set $workspace9   "9"
 font pango:monospace 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+floating_modifier       $mod
 
 # Start terminal
 bindsym $mod+Return     exec $term
@@ -82,7 +82,7 @@ bindsym $mod+F4         exec steam
 bindsym $mod+p          exec $monitor
 
 # Move worspace to left monitor
-bindsym $mod+space move workspace to output left
+bindsym $mod+space      move workspace to output left
 
 # Start python3
 bindsym $mod+adiaeresis exec $python
