@@ -12,7 +12,7 @@ gaps inner 15
 gaps outer 15
 
 # Revert mouse buttons
-# exec xmodmap -e "pointer = 3 2 1" 2>/dev/null
+exec xmodmap -e "pointer = 3 2 1" 2>/dev/null
 
 # Set monitor layout and resolution
 exec $monitor
@@ -27,11 +27,15 @@ exec --no-startup-id feh --bg-fill --no-fehbg ~/pictures/wallpaper/wallpaper_rim
 exec $music
 exec steam
 exec $browser
+exec $mail
+exec $mail2
+
 # Set variables
 set $mod          Mod4
 set $term         urxvt
 set $browser      firefox
 set $mail         thunderbird
+set $mail2        tutanota
 set $music        urxvt -e cmus
 set $pause        --no-startup-id cmus-remote -u
 set $next         --no-startup-id cmus-remote -n
@@ -39,7 +43,7 @@ set $prev         --no-startup-id cmus-remote -r
 set $inc          --no-startup-id cmus-remote --volume +10%
 set $dec          --no-startup-id cmus-remote --volume -10%
 set $lock         --no-startup-id i3lock -euti ~/pictures/wallpaper/wallpaper_rimuru.png
-set $monitor      --no-startup-id xrandr --output DP-4 --primary --mode 1920x1080 --rate 144 --right-of HDMI-0
+set $monitor      --no-startup-id xrandr --output DP-2 --primary --mode 1920x1080 --rate 240 --left-of DP-1
 set $screenshot   scrot ~/pictures/screenshots/%Y-%m-%d-%H%M%S.png
 set $python       urxvt -e python3
 set $workspace1   "1"
@@ -61,14 +65,17 @@ floating_modifier       $mod
 # Start terminal
 bindsym $mod+Return     exec $term
 
-# Start browser
-bindsym $mod+F1         exec $browser
+# Start ranger
+bindsym $mod+F1         exec urxvt -e ranger
 
-# Start mail client
-bindsym $mod+F2         exec $mail
+# Start browser
+bindsym $mod+F2         exec $browser
+
+# Start mail clients
+bindsym $mod+F3         exec "$mail & $mail2"
 
 # Start music player
-bindsym $mod+F3         exec $music
+bindsym $mod+F4         exec $music
 bindsym $mod+comma      exec $prev
 bindsym $mod+period     exec $next
 bindsym $mod+p          exec $pause
@@ -76,7 +83,7 @@ bindsym $mod+plus       exec $inc
 bindsym $mod+minus      exec $dec
 
 # Start steam client
-bindsym $mod+F4         exec steam
+bindsym $mod+F5         exec steam
 
 # Configure second monitor
 bindsym $mod+m          exec $monitor
@@ -104,19 +111,20 @@ assign [class="Firefox"]     $workspace2
 assign [class="Steam"]       $workspace3
 assign [class="mpv"]         $workspace4
 assign [title="cmus"]        $workspace5
-assign [class="Thunderbird"] $workspace6
-assign [class="qbittorrent"] $workspace7
+assign [class="Thunderbird"] $workspace7
+assign [class="tutanota-desktop"]    $workspace7
+assign [class="qbittorrent"] $workspace8
 
 # Default monitor workspace layout
-workspace 1 output DP-4
-workspace 2 output DP-4
-workspace 3 output DP-4
-workspace 4 output DP-4
-workspace 5 output HDMI-0
-workspace 6 output HDMI-0
-workspace 7 output HDMI-0
-workspace 8 output DP-4
-workspace 9 output DP-4
+workspace 1 output DP-2
+workspace 2 output DP-2
+workspace 3 output DP-2
+workspace 4 output DP-2
+workspace 5 output DP-1
+workspace 6 output DP-1
+workspace 7 output DP-1
+workspace 8 output DP-2
+workspace 9 output DP-2
 
 # Change focus
 bindsym $mod+j focus left

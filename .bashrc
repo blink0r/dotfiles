@@ -103,7 +103,7 @@ alias mkdir="mkdir -pv"
 alias epwn="vim /home/blingi/.local/bin/ctf_framework.py"
 alias rpwn="python /home/blingi/.local/bin/ctf_framework.py"
 alias yt="youtube-dl --add-metadata -ic"
-alias yts="youtube-dl --add-metadata -ics"
+alias yts="youtube-dl --add-metadata -icx --audio-format mp3"
 alias wget="wget -c"
 alias rm="rm --preserve-root"
 alias df="df -Th --total"
@@ -113,6 +113,8 @@ alias psg="ps -aux | grep -v grep | grep -i -e VSZ -e"
 alias update="sudo apt-get update && sudo apt-get upgrade && sudo apt-get autoremove"
 alias gitup="cd ~/documents/dotfiles/ && git add ~/documents/dotfiles/ && git commit -m 'update' && git push && cd"
 alias neo="neofetch --refresh_rate on"
+alias r="ranger"
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
