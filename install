@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/sh
 
 # Install icons for task bar
 apt-get install fonts-font-awesome
 
-dotfiles=(".dircolors" ".vimrc" ".bashrc" ".xinitrc" ".Xresources")
+dotfiles=(".dircolors" ".vimrc" ".zshrc" ".xinitrc" ".Xresources")
 
 # Backup directory for existing dotfiles
 backup_dir="$PWD/backup"
@@ -13,6 +13,7 @@ mkdir -p $HOME/.config/ranger
 mkdir -p $HOME/.config/i3
 mkdir -p $HOME/.local/bin
 mkdir -p /usr/share/i3blocks
+mkdir -p $PWD/backup
 
 # Symlink dotfiles in home directory
 for dotfile in "${dotfiles[@]}"

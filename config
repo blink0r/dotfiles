@@ -43,7 +43,7 @@ set $prev         --no-startup-id cmus-remote -r
 set $inc          --no-startup-id cmus-remote --volume +10%
 set $dec          --no-startup-id cmus-remote --volume -10%
 set $lock         --no-startup-id i3lock -euti ~/pictures/wallpaper/wallpaper_rimuru.png
-set $monitor      --no-startup-id xrandr --output DP-2 --primary --mode 1920x1080 --rate 240 --left-of DP-1
+set $monitor      --no-startup-id xrandr --output DP-4 --primary --mode 1920x1080 --rate 240
 set $screenshot   scrot ~/pictures/screenshots/%Y-%m-%d-%H%M%S.png
 set $python       urxvt -e python3
 set $workspace1   "1"
@@ -107,13 +107,13 @@ bindsym $mod+l          exec $lock
 bindsym $mod+r          reload
 
 # Default layout
-assign [class="Firefox"]     $workspace2
-assign [class="Steam"]       $workspace3
-assign [class="mpv"]         $workspace4
-assign [title="cmus"]        $workspace5
-assign [class="Thunderbird"] $workspace7
-assign [class="tutanota-desktop"]    $workspace7
-assign [class="qbittorrent"] $workspace8
+assign [class="Firefox"]           $workspace2
+assign [class="Steam"]             $workspace3
+assign [class="mpv"]               $workspace4
+assign [title="cmus"]              $workspace5
+assign [class="Thunderbird"]       $workspace7
+assign [class="tutanota-desktop"]  $workspace7
+assign [class="qBittorrent"]       $workspace8
 
 # Default monitor workspace layout
 workspace 1 output DP-2
